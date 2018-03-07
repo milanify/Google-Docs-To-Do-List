@@ -1,42 +1,37 @@
-/**
- * @OnlyCurrentDoc
- *
- * The above comment directs Apps Script to limit the scope of file
- * access for this add-on. It specifies that this add-on will only
- * attempt to read or modify the files in which the add-on is used,
- * and not all of the user's files. The authorization request message
- * presented to users will reflect this limited scope.
- */
+var doc = DocumentApp.getActiveDocument();
+var body = doc.getBody();
 
-/**
- * Creates a menu entry in the Google Docs UI when the document is opened.
- * This method is only used by the regular add-on, and is never called by
- * the mobile add-on version.
- *
- * @param {object} e The event parameter for a simple onOpen trigger. To
- *     determine which authorization mode (ScriptApp.AuthMode) the trigger is
- *     running in, inspect e.authMode.
- */
-function onOpen(e) {
-  DocumentApp.getUi().createAddonMenu()
-      .addItem('Start', 'showSidebar')
-      .addToUi();
+function clearAllContents() {
+body.clear();
+}
+
+function onOpen() {
+ DocumentApp.getUi()
+     .createMenu('Add-On Testing')
+     .addItem('Show initial message', 'showInitializationAlert')
+     .addItem('Insert Horizontal Line', 'insertHorizontalLine')
+     .addToUi();
+}
+
+function showInitializationAlert() {
+ var ui = DocumentApp.getUi(); // Same variations.
+
+ var result = ui.alert(
+    'Please confirm, are you sure you want to clear all contents of this document?',
+    'Selecting \'Yes\' is required to initialize this add-on for the first time.',
+     ui.ButtonSet.YES_NO);
+
+ // Process the user's response.
+ if (result == ui.Button.YES) {
+   clearAllContents();
+   ui.alert('Contents cleared.');
+ } else {
+   // User clicked "No" or X in the title bar.
+   ui.alert('You selected \'No\', the contents of this document will be preserved. Create a new blank document, and then run this add-on.');
+ }
 }
 
 
-/**
- * Runs when the add-on is installed.
- * This method is only used by the regular add-on, and is never called by
- * the mobile add-on version.
- *
- * @param {object} e The event parameter for a simple onInstall trigger. To
- *     determine which authorization mode (ScriptApp.AuthMode) the trigger is
- *     running in, inspect e.authMode. (In practice, onInstall triggers always
- *     run in AuthMode.FULL, but onOpen triggers may be AuthMode.LIMITED or
- *     AuthMode.NONE.)
- */
-function onInstall(e) {
- var doc = DocumentApp.getActiveDocument();
- var body = doc.getBody();
- body.clear();
+function insertHorizontalLine() {
+ body.insertHorizontalRule(5);
 }
