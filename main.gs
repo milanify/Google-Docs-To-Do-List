@@ -1,8 +1,8 @@
 var doc = DocumentApp.getActiveDocument();
 var body = doc.getBody();
 var style = {};
-style[DocumentApp.Attribute.SPACING_BEFORE] = 10;
-style[DocumentApp.Attribute.SPACING_AFTER] = 10;
+style[DocumentApp.Attribute.SPACING_BEFORE] = 15;
+style[DocumentApp.Attribute.SPACING_AFTER] = 15;
 
 function clearAllContents() {
  body.clear();
@@ -37,8 +37,7 @@ function showInitializationAlert() {
 
 function insertHorizontalLine() {
   body.insertHorizontalRule(0);
-   var par = body.appendParagraph('A paragraph with custom style.');
+  var par = body.insertParagraph(0, '');
   par.setHeading(DocumentApp.ParagraphHeading.HEADING4);
   par.setAttributes(style);
-
 }
