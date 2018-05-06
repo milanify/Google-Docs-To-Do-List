@@ -21,7 +21,7 @@ function showInitializationAlert() {
   var ui = DocumentApp.getUi(); // Same variations.
 
   var result = ui.alert(
-    'Confirm the following action: Are you sure you want to clear all contents of this document?',
+    'Clear all contents of this document?',
      'Selecting \'Yes\' is required to initialize this add-on for the first time.',
       ui.ButtonSet.YES_NO);
 
