@@ -40,7 +40,6 @@ function showInitializationAlert() {
 function insertHorizontalLine() {
   body.insertHorizontalRule(0);
   var par = body.insertParagraph(0, '');
-  par.setHeading(DocumentApp.ParagraphHeading.HEADING4);
   par.setAttributes(style);
 
   showSidebar();
@@ -50,4 +49,9 @@ function showSidebar() {
   var html = HtmlService.createHtmlOutputFromFile('sidebar')
       .setTitle('To-Do List')
       DocumentApp.getUi().showSidebar(html);
+}
+
+function getDocumentText() {
+   var text = body.editAsText();
+   return text.getText();
 }

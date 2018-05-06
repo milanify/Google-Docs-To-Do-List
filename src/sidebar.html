@@ -6,17 +6,41 @@
     <!-- The CSS package above applies Google styling to buttons and other elements. -->
 
     <style>
+    .block {
+      margin-left: 15px;
+    }
 
+    .form-text {
+      margin-top: 15px;
+      margin-left: 15px;
+    }
+
+    textarea {
+      resize: none;
+      vertical-align: middle;
+    }
     </style>
+
+    <script>
+      function setText() {
+        var div = document.getElementById('textArea1');
+        div.value = "Hello";
+      }
+    </script>
+
 
   </head>
   <body bgcolor="#EEEEEE">
   <div class="block">
     <button class="red" onclick="google.script.run.insertHorizontalLine()">NEW NOTE</button>
-    <button class="green">REFRESH LIST</button>
+    <button class="green" onclick="setText">REFRESH LIST</button>
     <button class="blue" onclick="google.script.host.close()">CLOSE</button>
   </div>
 
-<p>Hello, world!</p>
+  <div class="form-text">
+    <input type="checkbox" id="checkbox1">
+    <textarea id="textArea1" disabled></textarea>
+  </div>
+
   </body>
 </html>
