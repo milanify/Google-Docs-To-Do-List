@@ -20,27 +20,21 @@
       vertical-align: middle;
     }
     </style>
-
-    <script>
-      function setText() {
-        var div = document.getElementById('textArea1');
-        div.value = "Hello";
-      }
-    </script>
-
-
   </head>
   <body bgcolor="#EEEEEE">
   <div class="block">
     <button class="red" onclick="google.script.run.insertHorizontalLine()">NEW NOTE</button>
-    <button class="green" onclick="setText">REFRESH LIST</button>
+    <button class="green">REFRESH LIST</button>
     <button class="blue" onclick="google.script.host.close()">CLOSE</button>
   </div>
 
+ <? var data = getAllTextBetweenHorizontalRules(); ?>
+    <? for (var i = 0; i < data.length; i++) { ?>
   <div class="form-text">
     <input type="checkbox" id="checkbox1">
-    <textarea id="textArea1" disabled></textarea>
+    <textarea class="textArea1" disabled><?= data[i] ?></textarea>
   </div>
+    <? } ?>
 
   </body>
 </html>

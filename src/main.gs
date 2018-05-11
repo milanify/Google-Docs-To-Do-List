@@ -5,7 +5,7 @@ style[DocumentApp.Attribute.SPACING_BEFORE] = 15;
 style[DocumentApp.Attribute.SPACING_AFTER] = 15;
 
 function clearAllContents() {
- body.clear();
+  body.clear();
 }
 
 function onOpen() {
@@ -36,22 +36,33 @@ function showInitializationAlert() {
   }
 }
 
-
 function insertHorizontalLine() {
   body.insertHorizontalRule(0);
   var par = body.insertParagraph(0, '');
   par.setAttributes(style);
-
-  showSidebar();
 }
 
 function showSidebar() {
-  var html = HtmlService.createHtmlOutputFromFile('sidebar')
-      .setTitle('To-Do List')
-      DocumentApp.getUi().showSidebar(html);
+  var html = HtmlService.createTemplateFromFile('sidebar')
+  .evaluate()
+  .setTitle('To-Do List')
+
+  DocumentApp.getUi().showSidebar(html);
 }
 
-function getDocumentText() {
-   var text = body.editAsText();
-   return text.getText();
+function getAllDocumentText() {
+  return DocumentApp.getActiveDocument().getBody().getParagraphs();
+}
+
+function getAllTextBetweenHorizontalRules() {
+  var textBetweenHorizontalRules = [];
+
+  pars = getAllDocumentText();
+  pars.forEach(function(e) {
+    var isHorizontalRule = e.findElement(DocumentApp.ElementType.HORIZONTAL_RULE);
+    if (!isHorizontalRule) {
+      textBetweenHorizontalRules.push(e.getText());
+    }
+  })
+  return textBetweenHorizontalRules;
 }
