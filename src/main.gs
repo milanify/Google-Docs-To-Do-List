@@ -52,7 +52,7 @@ function showSidebar() {
   DocumentApp.getUi().showSidebar(html);
 }
 
-function getAllDocumentText() {
+function getAllDocumentText() {  
   return DocumentApp.getActiveDocument().getBody().getParagraphs();
 }
 
@@ -76,5 +76,5 @@ function getAllTextBetweenHorizontalRules() {
 }
 
 function deleteText(textData) {
-  console.log(textData);
+  body.insertParagraph(0, textData);
 }

@@ -27,7 +27,7 @@
       var checkboxes = document.getElementsByClassName("notes-checkbox");
       for (i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
-          google.script.host.deleteText(checkboxes[i].checked);
+          google.script.run.deleteText(checkboxes[i].checked);
         }
       }
     }
