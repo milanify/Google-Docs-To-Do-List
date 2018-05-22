@@ -24,12 +24,13 @@
 
     <script>
     function sendCheckboxes() {
-      var checkboxes = document.getElementsByClassName("notes-checkbox");
-      for (i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-          google.script.run.deleteText(checkboxes[i].checked);
-        }
+      var checkboxElements = document.getElementsByClassName("notes-checkbox");
+      var checkboxes = [];
+      for (i = 0; i < checkboxElements.length; i++) {
+        checkboxes.push(checkboxElements[i].checked);
       }
+      google.script.run.deleteCheckboxSelection(checkboxes);
+      setTimeout(google.script.run.showSidebar, 1000);
     }
     </script>
   </head>
@@ -38,7 +39,7 @@
   <div class="block">
     <button class="green" onclick="google.script.run.insertHorizontalLine()">NEW NOTE</button>
     <button class="red" onclick="sendCheckboxes()">DELETE</button>
-    <button class="blue" onclick="google.script.host.close()">HELP</button>
+    <button class="blue" onclick="google.script.run.showSidebar()">REFRESH</button>
   </div>
 
   <? var data = getAllTextBetweenHorizontalRules(); ?>
