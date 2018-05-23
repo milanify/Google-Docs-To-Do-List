@@ -17,20 +17,31 @@ style[DocumentApp.Attribute.SPACING_BEFORE] = 15;
 style[DocumentApp.Attribute.SPACING_AFTER] = 15;
 
 /**
- * Delete everything in the document
+ * Runs when the add-on is installed.
+ * This method is only used by the regular add-on, and is never called by
+ * the mobile add-on version.
+ *
+ * @param {object} e The event parameter for a simple onInstall trigger. To
+ *     determine which authorization mode (ScriptApp.AuthMode) the trigger is
+ *     running in, inspect e.authMode. (In practice, onInstall triggers always
+ *     run in AuthMode.FULL, but onOpen triggers may be AuthMode.LIMITED or
+ *     AuthMode.NONE.)
  */
-function clearAllContents() {
-  body.clear();
+function onInstall(e) {
+  onOpen(e);
+  showInitializationAlert();
 }
 
 /**
  * Runs when document is opened
+ *
+ * @param {object} e The event parameter for a simple onOpen trigger. To
+ *     determine which authorization mode (ScriptApp.AuthMode) the trigger is
+ *     running in, inspect e.authMode.
  */
-function onOpen() {
-  DocumentApp.getUi()
-      .createMenu('Add-On Testing')
-      .addItem('Show initial message', 'showInitializationAlert')
-      .addItem('Insert Horizontal Line', 'insertHorizontalLine')
+function onOpen(e) {
+  DocumentApp.getUi().createAddonMenu()
+      .addItem('Initialize', 'showInitializationAlert')
       .addItem('Show sidebar', 'showSidebar')
       .addToUi();
 
@@ -55,6 +66,13 @@ function showInitializationAlert() {
   } else {
     ui.alert('You selected \'No\', the contents of this document will be preserved. \n\nCreate a new blank word document, and then run this add-on.');
   }
+}
+
+/**
+ * Delete everything in the document
+ */
+function clearAllContents() {
+  body.clear();
 }
 
 /**
@@ -151,7 +169,7 @@ function deleteCheckboxSelection(checkboxData) {
 /**
  * Delete the note by removing text
  * Always remove the startIndex, which is the horizontal line separator below each note
- * Keep on deleting each line of text until a horizontal line is detected or the top of the document is reached
+ * Keep on deleting each line of text until the next horizontal line is detected or the top of the document is reached
  * Using [startIndex-i] because we are deleting from bottom to top, the very first line of the document is index 0
  *
  * @param {Array} textData contains all of the document's text
