@@ -20,6 +20,8 @@ Organize your tasks and get stuff done! Made with Google Apps Script / JavaScrip
 - If all else fails, re-initialize the document (deletes everything and starts formatting from scratch)
 
 ## Preview
+>For some reason the gifs below show up on github as low quality, if you want to view the full quality of the gifs then right click them and select 'View Image'.
+
 ![alt tag](https://github.com/milan102/Google-Docs-To-Do-List/blob/master/preview/gdocs-add-on-initialize.gif)
 ![alt tag](https://github.com/milan102/Google-Docs-To-Do-List/blob/master/preview/gdocs-add-on-insert.gif)
 ![alt tag](https://github.com/milan102/Google-Docs-To-Do-List/blob/master/preview/gdocs-add-on-delete.gif)
