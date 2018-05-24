@@ -22,8 +22,13 @@ Organize your tasks and get stuff done! Made with Google Apps Script / JavaScrip
 ## Preview
 >For some reason the gifs below show up on github as low quality, if you want to view the full quality of the gifs then right click them and select 'View Image'.
 
+Initialize the add-on for the first time
 ![alt tag](https://github.com/milan102/Google-Docs-To-Do-List/blob/master/preview/gdocs-add-on-initialize.gif)
+
+Insert a new note
 ![alt tag](https://github.com/milan102/Google-Docs-To-Do-List/blob/master/preview/gdocs-add-on-insert.gif)
+
+Delete a note
 ![alt tag](https://github.com/milan102/Google-Docs-To-Do-List/blob/master/preview/gdocs-add-on-delete.gif)
 
 
