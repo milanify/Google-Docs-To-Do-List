@@ -37,16 +37,16 @@
   <body bgcolor="#EEEEEE">
 
   <div class="block">
-    <button class="green" onclick="google.script.run.insertHorizontalLine()">NEW NOTE</button>
+    <button class="green" onclick="google.script.run.insertHorizontalLine()">New note</button>
     <button class="red" onclick="sendCheckboxes()">DELETE</button>
-    <button class="blue" onclick="google.script.run.showSidebar()">REFRESH</button>
+    <button class="blue" onclick="google.script.run.showSidebar()">Refresh</button>
   </div>
 
   <? var data = getAllTextBetweenHorizontalRules(); ?>
     <? for (var i = 0; i < data.length; i++) { ?>
   <div class="form-text">
     <input type="checkbox" class="notes-checkbox" id="<?= 'checkbox' + i ?>">
-    <textarea class= "notes-textarea" id="<?= 'textarea' + i ?>" disabled><?= data[i] ?></textarea>
+    <textarea class= "notes-textarea" id="<?= 'textarea' + i ?>" rows="3" disabled><?= data[i] ?></textarea>
   </div>
     <? } ?>
 

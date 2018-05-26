@@ -6,6 +6,11 @@
  * attempt to read or modify the files in which the add-on is used,
  * and not all of the user's files. The authorization request message
  * presented to users will reflect this limited scope.
+ *
+ * Instructions on how to use this add-on:
+ * Select 'Initialize' from the Add-ons menu to begin.
+ * Make sure formatting is preserved by only using the 'New note' and 'Delete' buttons from the sidebar,
+ * which is shown by clicking 'View notes' in the Add-ons menu.
  */
 
 /**
@@ -29,7 +34,6 @@ style[DocumentApp.Attribute.SPACING_AFTER] = 15;
  */
 function onInstall(e) {
   onOpen(e);
-  showInitializationAlert();
 }
 
 /**
@@ -42,10 +46,8 @@ function onInstall(e) {
 function onOpen(e) {
   DocumentApp.getUi().createAddonMenu()
       .addItem('Initialize', 'showInitializationAlert')
-      .addItem('Show sidebar', 'showSidebar')
+      .addItem('View notes', 'showSidebar')
       .addToUi();
-
-  showSidebar();
 }
 
 /**
