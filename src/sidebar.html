@@ -23,6 +23,37 @@
     </style>
 
     <script>
+    var initialText;
+    var newText;
+
+    function documentOnChangeHandler() {
+      google.script.run.withSuccessHandler(getDocumentInitialText).getAllTextBetweenHorizontalRules();
+      var id = setInterval(function() {
+        google.script.run.withSuccessHandler(getDocumentNewText).getAllTextBetweenHorizontalRules();
+        if(initialText && newText && !arraysEqual(initialText, newText)) {
+          clearInterval(id);
+          google.script.run.showSidebar();
+        }}, 5000);
+    }
+
+    function arraysEqual(arr1, arr2) {
+      if(arr1.length !== arr2.length)
+        return false;
+      for(var i = arr1.length; i--;) {
+        if(arr1[i] !== arr2[i])
+            return false;
+      }
+      return true;
+    }
+
+    function getDocumentInitialText(documentText) {
+      initialText = documentText;
+    }
+
+    function getDocumentNewText(documentText) {
+      newText = documentText;
+    }
+
     function sendCheckboxes() {
       var checkboxElements = document.getElementsByClassName("notes-checkbox");
       var checkboxes = [];
@@ -34,7 +65,7 @@
     }
     </script>
   </head>
-  <body bgcolor="#EEEEEE">
+  <body onload="documentOnChangeHandler()" bgcolor="#EEEEEE">
 
   <div class="block">
     <button class="green" onclick="google.script.run.insertHorizontalLine()">New note</button>
