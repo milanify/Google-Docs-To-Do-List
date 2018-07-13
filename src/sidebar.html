@@ -25,15 +25,20 @@
     <script>
     var initialText;
     var newText;
+    var timeout = null;
 
     function documentOnChangeHandler() {
       google.script.run.withSuccessHandler(getDocumentInitialText).getAllTextBetweenHorizontalRules();
       var id = setInterval(function() {
         google.script.run.withSuccessHandler(getDocumentNewText).getAllTextBetweenHorizontalRules();
         if(initialText && newText && !arraysEqual(initialText, newText)) {
-          clearInterval(id);
-          google.script.run.showSidebar();
-        }}, 5000);
+          clearTimeout(timeout);
+          initialText = newText;
+          timeout = setTimeout(function() {
+            clearInterval(id);
+            google.script.run.showSidebar();
+          }, 10000);
+        }}, 3000);
     }
 
     function arraysEqual(arr1, arr2) {
