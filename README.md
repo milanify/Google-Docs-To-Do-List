@@ -10,13 +10,13 @@ Organize your tasks and get stuff done! Made with Google Apps Script / JavaScrip
 - Simple organization using horizontal line components
 - HTML sidebar that displays note information
 - HTML sidebar with buttons to enhance functionality
-- Automatically refreshes notes list when changes are detected
+- Automatically refreshes notes list when changes are detected, after 10 seconds
 - User-friendly design
 
 ## Tips
 - Always have a horizontal line below each note
 - Try not to change the formatting manually, always use the 'new note' and 'delete button'
-- The sidebar will automatically refresh after 5 seconds once you make a change in your notes
+- **The sidebar will automatically refresh after 10 seconds once you make a change in your notes**
 - If you want to type unrelated stuff you can do so at the very bottom of the document
 - If all else fails, re-initialize the document (deletes everything and starts formatting from scratch)
 
