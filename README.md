@@ -20,6 +20,14 @@ Organize your tasks and get stuff done! Made with Google Apps Script / JavaScrip
 - If you want to type unrelated stuff you can do so at the very bottom of the document
 - If all else fails, re-initialize the document (deletes everything and starts formatting from scratch)
 
+## Instructions to enable the add-on
+- Click on the add-ons menu, and then select "Manage add-ons..."
+![alt tag](https://github.com/milan102/Google-Docs-To-Do-List/blob/master/preview/using_addon_instruction1.png)
+
+- Click on the green "MANAGE" button, and select "Use in this document"
+![alt tag](https://github.com/milan102/Google-Docs-To-Do-List/blob/master/preview/using_addon_instruction2.png)
+
+
 ## Preview
 >For some reason the gifs below show up on github as low quality, if you want to view the full quality of the gifs then right click them and select 'View Image'.
 
