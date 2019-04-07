@@ -4,7 +4,7 @@ Google Docs add-on for a productivity to-do list
 Organize your tasks and get stuff done! Made with Google Apps Script / JavaScript.
 
 ## Current Version: 4.0
->[Link to install the add-on](https://chrome.google.com/webstore/detail/productivity-to-do-list/olfopklkiancnconcnodccbbjiianpee?utm_source=permalink)
+> (Add-on has been unpublished from the App Store because of Google making it difficult for me to update the add-on)
 
 ## Features
 - Simple organization using horizontal line components
