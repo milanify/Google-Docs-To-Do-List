@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <!-- The CSS package above applies Google styling to buttons and other elements. -->
+
+    <style>
+    .block {
+      margin-top: 15px;
+      margin-left: 15px;
+    }
+
+    .form-text {
+      margin-top: 15px;
+      margin-left: 15px;
+    }
+
+    textarea {
+      resize: none;
+      vertical-align: middle;
+    }
+    </style>
+
+    <script>
+    var initialText;
+    var newText;
+    var timeout = null;
+
+    function documentOnChangeHandler() {
+      google.script.run.withSuccessHandler(getDocumentInitialText).getAllTextBetweenHorizontalRules();
+      var id = setInterval(function() {
+        google.script.run.withSuccessHandler(getDocumentNewText).getAllTextBetweenHorizontalRules();
+        if(initialText && newText && !arraysEqual(initialText, newText)) {
+          clearTimeout(timeout);
+          initialText = newText;
+          timeout = setTimeout(function() {
+            clearInterval(id);
+            google.script.run.showSidebar();
+          }, 10000);
+        }}, 3000);
+    }
+
+    function arraysEqual(arr1, arr2) {
+      if(arr1.length !== arr2.length)
+        return false;
+      for(var i = arr1.length; i--;) {
+        if(arr1[i] !== arr2[i])
+            return false;
+      }
+      return true;
+    }
+
+    function getDocumentInitialText(documentText) {
+      initialText = documentText;
+    }
+
+    function getDocumentNewText(documentText) {
+      newText = documentText;
+    }
+
+    function sendCheckboxes() {
+      var checkboxElements = document.getElementsByClassName("notes-checkbox");
+      var checkboxes = [];
+      for (i = 0; i < checkboxElements.length; i++) {
+        checkboxes.push(checkboxElements[i].checked);
+      }
+      google.script.run.deleteCheckboxSelection(checkboxes);
+      setTimeout(google.script.run.showSidebar, 1000);
+    }
+    </script>
+  </head>
+  <body onload="documentOnChangeHandler()" bgcolor="#EEEEEE">
+
+  <div class="block">
+    <button class="green" onclick="google.script.run.insertHorizontalLine()">New note</button>
+    <button class="red" onclick="sendCheckboxes()">DELETE</button>
+    <button class="blue" onclick="google.script.run.showSidebar()">Refresh</button>
+  </div>
+
+  <? var data = getAllTextBetweenHorizontalRules(); ?>
+    <? for (var i = 0; i < data.length; i++) { ?>
+  <div class="form-text">
+    <input type="checkbox" class="notes-checkbox" id="<?= 'checkbox' + i ?>">
+    <textarea class= "notes-textarea" id="<?= 'textarea' + i ?>" rows="3" disabled><?= data[i] ?></textarea>
+  </div>
+    <? } ?>
+
+  </body>
+</html>
