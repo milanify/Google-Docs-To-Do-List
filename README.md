@@ -4,7 +4,7 @@ Google Docs add-on for a productivity to-do list
 Organize your tasks and get stuff done! Made with Google Apps Script / JavaScript.
 
 ## Current Version: 4.0
->[Link to install the add-on](https://chrome.google.com/webstore/detail/productivity-to-do-list/olfopklkiancnconcnodccbbjiianpee?utm_source=permalink)
+> (Add-on has been unpublished from the App Store because of Google making it difficult for me to update the add-on)
 
 ## Features
 - Simple organization using horizontal line components
@@ -39,9 +39,3 @@ Insert a new note
 
 Delete a note
 ![alt tag](https://github.com/milan102/Google-Docs-To-Do-List/blob/master/preview/gdocs-add-on-delete.gif)
-
-
-## Donations
-<p align="center">
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=HL3P4UC2JKEAN&lc=US&item_name=Milan%27s%20Software&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate"/></a>
-</p>
