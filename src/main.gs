@@ -40,6 +40,8 @@ function onOpen(e) {
       .addItem('Initialize', 'showInitializationAlert')
       .addItem('View notes', 'showSidebar')
       .addToUi();
+
+  body = DocumentApp.getActiveDocument().getBody();
 }
 
 /**
