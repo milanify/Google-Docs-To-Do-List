@@ -76,7 +76,7 @@ function clearAllContents() {
  */
 function insertHorizontalLine() {
   body.insertHorizontalRule(0);
-  let par = body.insertParagraph(0, '');
+  var par = body.insertParagraph(0, '');
   par.setAttributes(style);
   showSidebar();
 }
