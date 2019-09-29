@@ -1,4 +1,8 @@
 /**
+ * @OnlyCurrentDoc
+ */
+
+/**
  * Instructions on how to use this add-on:
  * Select 'Initialize' from the Add-ons menu to begin.
  * Make sure formatting is preserved by only using the 'New note' and 'Delete' buttons from the sidebar,
