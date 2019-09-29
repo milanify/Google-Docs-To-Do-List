@@ -31,7 +31,7 @@
       google.script.run.withSuccessHandler(getDocumentInitialText).getAllTextBetweenHorizontalRules();
       var id = setInterval(function() {
         google.script.run.withSuccessHandler(getDocumentNewText).getAllTextBetweenHorizontalRules();
-        if(initialText && newText && !arraysEqual(initialText, newText)) {
+        if(typeof initialText !== 'undefined' && typeof newText !== 'undefined' && !arraysEqual(initialText, newText)) {
           clearTimeout(timeout);
           initialText = newText;
           timeout = setTimeout(function() {
