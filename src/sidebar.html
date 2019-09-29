@@ -42,13 +42,7 @@
     }
 
     function arraysEqual(arr1, arr2) {
-      if(arr1.length !== arr2.length)
-        return false;
-      for(var i = arr1.length; i--;) {
-        if(arr1[i] !== arr2[i])
-            return false;
-      }
-      return true;
+      return JSON.stringify(arr1) === JSON.stringify(arr2);
     }
 
     function getDocumentInitialText(documentText) {
@@ -60,9 +54,9 @@
     }
 
     function sendCheckboxes() {
-      var checkboxElements = document.getElementsByClassName("notes-checkbox");
-      var checkboxes = [];
-      for (i = 0; i < checkboxElements.length; i++) {
+      let checkboxElements = document.getElementsByClassName("notes-checkbox");
+      let checkboxes = [];
+      for (let i = 0; i < checkboxElements.length; i++) {
         checkboxes.push(checkboxElements[i].checked);
       }
       google.script.run.deleteCheckboxSelection(checkboxes);
